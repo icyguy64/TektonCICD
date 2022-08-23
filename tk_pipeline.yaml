@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: tk-pipeline-hello
+spec:
+  tasks:
+    - name: this-is-first-task
+      taskRef:
+        name: hello
+    - name: this-is-second-task
+      taskRef:
+        name: hello
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: tk-pipeline-run-hello
+spec:
+  pipelineRef:
+    name: tk-pipeline-hello
